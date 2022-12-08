@@ -3,8 +3,9 @@ import './images/turing-logo.png'
 import userData from './data/users';
 import User from './User';
 import UserRepository from './UserRepository';
-import fetchUserData from "./apiCalls.js";
-import {promiseAll} from "./apiCalls.js"
+
+import fetchUserData from "./apiCalls.js"
+import promiseAll from './apiCalls.js'
 
 console.log('hello friends', fetchUserData)
 const userName = document.querySelector('#username') 
@@ -16,19 +17,22 @@ const userStepGoal = document.querySelector('#user-goal')
 const averageStepGoal = document.querySelector('#average-goal')
 const friendsData = document.querySelector('#friends')
 
-
 let user
 let userRepo
 let currentUser
 
-promiseAll().then((response) => {
-console.log('response',response)
-user = new User(userData[Math.floor(Math.random() * userData.length)])
-userRepo = new UserRepository(userData)
-console.log('userRepo', user)
+// console.log('here', fetchUserData())
+Promise.all(fetchUserData()) //pass an array into the args --> 
+    .then(data => {
+      console.log('data', data[0].userData) //
+      const userDataArray = data[0].userData //array of data object --> class instance obj
+      const usersArray = userDataArray.map(userObj => new User(userObj)) //
 
-})
-  console.log('here', user)
+      user = new User(userData[Math.floor(Math.random() * userData.length)])
+      userRepo = new UserRepository(usersArray)
+      console.log('userRepo', userRepo)
+    })
+
   window.addEventListener('load', () => {
     user
     promiseAll
@@ -37,8 +41,6 @@ console.log('userRepo', user)
     stepGoalDisplay()
     friendNames()
   })
-
-
 
 function displayName() {
   userName.innerHTML = `Welcome, ${user.showFirstName()}!`
@@ -51,7 +53,6 @@ function displayInfoToDom() {
     strideLength.innerHTML = `Your Stride Length: ${user.strideLength}`
     userStepGoal.innerHTML = `Your Step Goal: ${user.dailyStepGoal}`
     // friendsData.innerHTML = `Your Friends: ${user.friends.showFirstName()}`
-
 }
 
 function stepGoalDisplay() {
