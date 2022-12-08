@@ -3,9 +3,11 @@ import './images/turing-logo.png'
 import userData from './data/users';
 import User from './User';
 import UserRepository from './UserRepository';
+
 import fetchUserData from "./apiCalls.js"
 import promiseAll from './apiCalls.js'
 
+console.log('hello friends', fetchUserData)
 const userName = document.querySelector('#username') 
 const name = document.querySelector('#name') 
 const email = document.querySelector('#email')
@@ -33,8 +35,9 @@ Promise.all(fetchUserData()) //pass an array into the args -->
 
   window.addEventListener('load', () => {
     user
+    promiseAll
     displayName()
-    displayInfo()
+    displayInfoToDom()
     stepGoalDisplay()
     friendNames()
   })
@@ -43,14 +46,13 @@ function displayName() {
   userName.innerHTML = `Welcome, ${user.showFirstName()}!`
    }
 
-function displayInfo() {
+function displayInfoToDom() {
     name.innerHTML = `Name: ${user.name}`
     email.innerHTML = `Email: ${user.email}`
     address.innerHTML = `Address: ${user.address}`
     strideLength.innerHTML = `Your Stride Length: ${user.strideLength}`
     userStepGoal.innerHTML = `Your Step Goal: ${user.dailyStepGoal}`
     // friendsData.innerHTML = `Your Friends: ${user.friends.showFirstName()}`
-
 }
 
 function stepGoalDisplay() {
@@ -74,7 +76,7 @@ function stepGoalDisplay() {
 //     getRandomUser();
 //   }}
 // const getRandomUser = () => {
-//   currentUser = new User(userData]);
+//   currentUser = new User(userData);
 //   userRepository = new UserRepository(currentUser)
 // }
 
