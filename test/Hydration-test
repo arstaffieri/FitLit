@@ -1,0 +1,16 @@
+import { expect } from 'chai';
+import UserRepository from '../src/UserRepository';
+import userData from '../src/data/users.js'
+import Hydration from '../src/Hydration';
+
+describe('Hydration Data', function() {
+    let hydration
+    
+    beforeEach(function() {
+      hydration = new Hydration()
+    });
+    
+    it('should be a function', function() {
+      expect(Hydration).to.be.a('function')
+    })
+}
