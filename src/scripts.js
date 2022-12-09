@@ -30,38 +30,32 @@ const getData = () => {
       users = data[0].userData 
       user = users[Math.floor(Math.random() * users.length)]
       currentUser = new User(user) 
-      console.log('current user', currentUser)
-      return currentUser
-    })}
-      // return users
-    
-      console.log('get data', getData)
-    window.addEventListener('load', () => {
-      user
-      promiseAll
-      // getRandomUser()
-      getData()
-      displayName()
+     
       displayInfoToDom()
-      stepGoalDisplay()
-      friendNames()
-    })
-    
-    // user = new User(userData[Math.floor(Math.random() * userData.length)])
-    // userRepo = new UserRepository(usersArray)
-    // console.log('userRepo', userRepo)
-  //   function getRandomUser(){
+    })}
+     
+window.addEventListener('load', () => {
+  user
+  promiseAll
+  getData()
+  displayInfoToDom()
+})
 
-  //   const newUser = users(user => new User(users[Math.floor(Math.random() * users.length)])) 
-
-  //   userRepo = new UserRepository(usersArray)
-  //   console.log('userRepo', userRepo)
-  //   return newUser
-  // }
-
+function displayInfoToDom() {
+  displayName()
+  stepGoalDisplay()
+      
+}   
 function displayName() {
   userName.innerHTML = `Welcome, ${currentUser.showFirstName()}!`
-   }
+    name.innerHTML = `Name: ${currentUser.name}`
+    email.innerHTML = `Email: ${currentUser.email}`
+    address.innerHTML = `Address: ${currentUser.address}`
+    strideLength.innerHTML = `Your Stride Length: ${currentUser.strideLength}`
+    userStepGoal.innerHTML = `Your Step Goal: ${currentUser.dailyStepGoal}`
+  
+    friendNames()
+  }
 
    function displaySleepData(){
     // sleepData.innerHTML += 
@@ -71,27 +65,19 @@ function displayName() {
     
    }
 
-function displayInfoToDom() {
-    name.innerHTML = `Name: ${user.name}`
-    email.innerHTML = `Email: ${user.email}`
-    address.innerHTML = `Address: ${user.address}`
-    strideLength.innerHTML = `Your Stride Length: ${user.strideLength}`
-    userStepGoal.innerHTML = `Your Step Goal: ${user.dailyStepGoal}`
-    // friendsData.innerHTML = `Your Friends: ${user.friends.showFirstName()}`
+function stepGoalDisplay() {     
+  averageStepGoal.innerHTML = `Your step goal is ${currentUser.dailyStepGoal} steps. The average step goal is ${userRepo.getAverageStepGoal()}.`
 }
 
-function stepGoalDisplay() {     averageStepGoal.innerHTML = `Your step goal is ${user.dailyStepGoal} steps. The average step goal is ${userRepo.getAverageStepGoal()}.`
+function friendNames() {
+  const userFriends = currentUser.friends
+  const findFriendsNames = userFriends.reduce((acc, friend) => {
+    const friendInfo = userRepo.getUserData(friend)
+    acc += `<p>${friendInfo.name}'s step goal: ${friendInfo.dailyStepGoal}</p>`
+    return acc
+  }, "")
+  friendsData.innerHTML = findFriendsNames
 }
-
-  function friendNames() {
-    const userFriends = user.friends
-    const findFriendsNames = userFriends.reduce((acc, friend) => {
-      const friendInfo = userRepo.getUserData(friend)
-      acc += `<p>${friendInfo.name}'s step goal: ${friendInfo.dailyStepGoal}</p>`
-      return acc
-    }, "")
-    friendsData.innerHTML = findFriendsNames
-  }
 
 
 
