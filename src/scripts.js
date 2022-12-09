@@ -3,11 +3,9 @@ import './images/turing-logo.png'
 import userData from './data/users';
 import User from './User';
 import UserRepository from './UserRepository';
-
-import fetchUserData from "./apiCalls.js"
+import fetchData from "./apiCalls.js"
 import promiseAll from './apiCalls.js'
 
-console.log('hello friends', fetchUserData)
 const userName = document.querySelector('#username') 
 const name = document.querySelector('#name') 
 const email = document.querySelector('#email')
@@ -21,14 +19,18 @@ let user
 let userRepo
 let currentUser
 
-// console.log('here', fetchUserData())
-Promise.all(fetchUserData()) //pass an array into the args --> 
+// console.log('here', fetchData())
+Promise.all(fetchData()) //pass an array into the args --> 
     .then(data => {
-      console.log('data', data[0].userData) //
-      const userDataArray = data[0].userData //array of data object --> class instance obj
-      const usersArray = userDataArray.map(userObj => new User(userObj)) //
+      console.log('data', data) //
+      const userDataArray = data[0].userData
+      const sleepData = data[1]
+      const hydrationData = data[2]//array of data object --> class instance obj
+      console.log('userDataArray', userDataArray)
+      const newUser = userDataArray.map(user => new User(userDataArray[Math.floor(Math.random() * userDataArray.length)])) //
 
-      user = new User(userData[Math.floor(Math.random() * userData.length)])
+      console.log('newUser', newUser)
+
       userRepo = new UserRepository(usersArray)
       console.log('userRepo', userRepo)
     })
