@@ -6,7 +6,8 @@ import UserRepository from './UserRepository';
 import fetchData from "./apiCalls.js"
 import promiseAll from './apiCalls.js'
 
-console.log('hello friends', fetchData())
+
+const sleepData = document.querySelector('#sleep-data') 
 const userName = document.querySelector('#username') 
 const name = document.querySelector('#name') 
 const email = document.querySelector('#email')
@@ -20,7 +21,6 @@ let user
 let userRepo
 let currentUser
 let users
-let sleepData
 let hydrationData
 
 // console.log('here', fetchUserData())
@@ -47,6 +47,7 @@ Promise.all(fetchData()) //pass an array into the args -->
     // console.log('userRepo', userRepo)
     console.log('get data', user)
     function getRandomUser(){
+
     const newUser = users(user => new User(users[Math.floor(Math.random() * users.length)])) 
 
     userRepo = new UserRepository(usersArray)
@@ -56,6 +57,18 @@ Promise.all(fetchData()) //pass an array into the args -->
 
 function displayName() {
   userName.innerHTML = `Welcome, ${user.showFirstName()}!`
+   }
+
+   function displaySleepData(){
+    sleepData.innerHTML += 
+    `<li> your average number of hours slept per day: ${ourUser.sleep.somthingConectiing}</li>
+    <li>your average sleep quality per day over all time: ${ourUser.sleep.somthingConectiing}</li>
+    <li>$ your average number of hours slept per day: ${ourUser.sleep.somthingConectiing}</li>
+    <li>the numbuer of hours you slept slept on ${getDate} is: ${ourUser.sleep.somthingConectiing}</li> 
+    <li>your sleep quality on the ${getDate} is: ${ourUser.sleep.somthingConectiing}</li>
+    <li> the number of hours slept each day over a given week is: ${ourUser.sleep.somthingConectiing}</li>
+    <li>your sleep quality for each day over the course of a week is: ${ourUser.sleep.somthingConectiing}</li>
+    <li>For all users, the average sleep quality is: ${ourUser.sleep.somthingConectiing}</li>`
    }
 
 function displayInfoToDom() {
