@@ -93,6 +93,6 @@ describe('Sleep', () => {
         expect(sleep).to.be.an.instanceOf(Sleep)
     })
     it('Should be able to get user data by the user id', function () {
-        expect(sleep.findSleepDataByUserId(2)).to.equal()
+        expect(sleep.findSleepDataByUserId(2)).to.deep.equal(sleepData[1])
     })
 })

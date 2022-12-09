@@ -4,12 +4,12 @@ class Sleep {
         this.userID = userID
     }
     findSleepDataByUserId(userID) {
-       const sleepDataByUserId = sleepData.find(user => {
+       const sleepDataByUserId = this.sleepData.find(user => {
         if(userID === user.userID) {
             return user
         }
-        return sleepDataByUserId
        })
+    return sleepDataByUserId
     }
 }
 
