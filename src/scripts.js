@@ -3,6 +3,8 @@ import './images/turing-logo.png'
 import userData from './data/users';
 import User from './User';
 import UserRepository from './UserRepository';
+// import hydrationData from './data/hydrationData';
+// import Hydration from './Hydration.js';
 
 import fetchUserData from "./apiCalls.js"
 import promiseAll from './apiCalls.js'
@@ -69,6 +71,7 @@ function stepGoalDisplay() {
     friendsData.innerHTML = findFriendsNames
   }
 
+// console.log("the thing youre looking for is here SCRIPTS TRP testing", hydrationData)
 
 // const makeClasses = (users) => {
 //   userRepository = new UserRepository(users);
