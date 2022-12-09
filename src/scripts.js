@@ -61,14 +61,10 @@ function displayName() {
 
    function displaySleepData(){
     sleepData.innerHTML += 
-    `<li> your average number of hours slept per day: ${ourUser.sleep.somthingConectiing}</li>
-    <li>your average sleep quality per day over all time: ${ourUser.sleep.somthingConectiing}</li>
-    <li>$ your average number of hours slept per day: ${ourUser.sleep.somthingConectiing}</li>
-    <li>the numbuer of hours you slept slept on ${getDate} is: ${ourUser.sleep.somthingConectiing}</li> 
-    <li>your sleep quality on the ${getDate} is: ${ourUser.sleep.somthingConectiing}</li>
-    <li> the number of hours slept each day over a given week is: ${ourUser.sleep.somthingConectiing}</li>
-    <li>your sleep quality for each day over the course of a week is: ${ourUser.sleep.somthingConectiing}</li>
-    <li>For all users, the average sleep quality is: ${ourUser.sleep.somthingConectiing}</li>`
+    `<li> You slept ${hoursSlept()}hours! yout sleep quality was ${sleepQuality(example)}</li>
+    <li>You slept ${hoursSlept(example)}hours this week! yout sleep quality was ${sleepQuality}</li>
+    <li>$ Your all-time average sleep quality is ${allTimeQuality(example)} and your all-time average number of hours slept is ${allTimeHoursSlept(example)}</li>
+    
    }
 
 function displayInfoToDom() {
