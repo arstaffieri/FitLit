@@ -60,10 +60,10 @@ function displayName() {
    }
 
    function displaySleepData(){
-    sleepData.innerHTML += 
-    `<li> You slept ${hoursSlept()}hours! yout sleep quality was ${sleepQuality(example)}</li>
-    <li>You slept ${hoursSlept(example)}hours this week! yout sleep quality was ${sleepQuality}</li>
-    <li>$ Your all-time average sleep quality is ${allTimeQuality(example)} and your all-time average number of hours slept is ${allTimeHoursSlept(example)}</li>
+    // sleepData.innerHTML += 
+    // `<li> You slept ${hoursSlept()}hours! yout sleep quality was ${sleepQuality(example)}</li>
+    // <li>You slept ${hoursSlept(example)}hours this week! yout sleep quality was ${sleepQuality}</li>
+    // <li>$ Your all-time average sleep quality is ${allTimeQuality(example)} and your all-time average number of hours slept is ${allTimeHoursSlept(example)}</li>
     
    }
 
@@ -76,8 +76,7 @@ function displayInfoToDom() {
     // friendsData.innerHTML = `Your Friends: ${user.friends.showFirstName()}`
 }
 
-function stepGoalDisplay() {
-     averageStepGoal.innerHTML = `Your step goal is ${user.dailyStepGoal} steps. The average step goal is ${userRepo.getAverageStepGoal()}.`
+function stepGoalDisplay() {     averageStepGoal.innerHTML = `Your step goal is ${user.dailyStepGoal} steps. The average step goal is ${userRepo.getAverageStepGoal()}.`
 }
 
   function friendNames() {
