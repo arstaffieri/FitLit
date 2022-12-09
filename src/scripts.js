@@ -1,13 +1,12 @@
 import './css/styles.css';
 import './images/turing-logo.png'
-import userData from './data/users';
+// import userData from './data/users';
 import User from './User';
 import UserRepository from './UserRepository';
-
-import fetchUserData from "./apiCalls.js"
+import fetchData from "./apiCalls.js"
 import promiseAll from './apiCalls.js'
 
-console.log('hello friends', fetchUserData)
+
 const userName = document.querySelector('#username') 
 const name = document.querySelector('#name') 
 const email = document.querySelector('#email')
@@ -20,18 +19,20 @@ const friendsData = document.querySelector('#friends')
 let user
 let userRepo
 let currentUser
+let users
+let sleepData
+let hydrationData
 
-// console.log('here', fetchUserData())
-Promise.all(fetchUserData()) //pass an array into the args --> 
-    .then(data => {
-      console.log('data', data[0].userData) //
-      const userDataArray = data[0].userData //array of data object --> class instance obj
-      const usersArray = userDataArray.map(userObj => new User(userObj)) //
-
-      user = new User(userData[Math.floor(Math.random() * userData.length)])
-      userRepo = new UserRepository(usersArray)
-      console.log('userRepo', userRepo)
-    })
+// const getData = () => {
+  Promise.all(fetchData()) //pass an array into the args --> 
+  .then(data => {
+    console.log('data', data[0].userData) 
+    users = [data[0].userData]
+    //  sleepData = [data[1]]
+    //  hydrationData = [data[2]] //array of data object --> class instance obj
+    console.log('user = ', users)
+    return [data]
+    })//}
 
   window.addEventListener('load', () => {
     user
@@ -41,6 +42,15 @@ Promise.all(fetchUserData()) //pass an array into the args -->
     stepGoalDisplay()
     friendNames()
   })
+
+  // console.log('get data',getData)
+  function getRandomUser(){
+    const newUser = users(user => new User(users[Math.floor(Math.random() * users.length)])) 
+
+    userRepo = new UserRepository(usersArray)
+    console.log('userRepo', userRepo)
+    return newUser
+  }
 
 function displayName() {
   userName.innerHTML = `Welcome, ${user.showFirstName()}!`
@@ -56,7 +66,7 @@ function displayInfoToDom() {
 }
 
 function stepGoalDisplay() {
-    averageStepGoal.innerHTML = `Your step goal is ${user.dailyStepGoal} steps. The average step goal is ${userRepo.getAverageStepGoal()}.`
+     averageStepGoal.innerHTML = `Your step goal is ${user.dailyStepGoal} steps. The average step goal is ${userRepo.getAverageStepGoal()}.`
 }
 
   function friendNames() {
@@ -70,15 +80,4 @@ function stepGoalDisplay() {
   }
 
 
-// const makeClasses = (users) => {
-//   userRepository = new UserRepository(users);
-//   if (currentUser === undefined){
-//     getRandomUser();
-//   }}
-// const getRandomUser = () => {
-//   currentUser = new User(userData);
-//   userRepository = new UserRepository(currentUser)
-// }
 
-//getrandomIndex  compare user Id
-//userRepo has users
