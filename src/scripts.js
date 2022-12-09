@@ -6,6 +6,7 @@ import UserRepository from './UserRepository';
 import fetchData from "./apiCalls.js"
 import promiseAll from './apiCalls.js'
 
+
 const sleepData = document.querySelector('#sleep-data') 
 const userName = document.querySelector('#username') 
 const name = document.querySelector('#name') 
@@ -22,28 +23,31 @@ let currentUser
 let users
 let hydrationData
 
-// const getData = () => {
-  Promise.all(fetchData()) //pass an array into the args --> 
-  .then(data => {
-    console.log('data', data[0].userData) 
-    users = [data[0].userData]
-     sleepData = [data[1]]
-    //  hydrationData = [data[2]] //array of data object --> class instance obj
-    console.log('user = ', users)
-    return [data]
-    })//}
+// console.log('here', fetchUserData())
+Promise.all(fetchData()) //pass an array into the args --> 
+    .then(data => {
+      users = data[0].userData 
+      user = users[Math.floor(Math.random() * users.length)] 
+      return
+    })
+      // return users
+    
+    window.addEventListener('load', () => {
+      user
+      promiseAll
+      getRandomUser()
+      displayName()
+      displayInfoToDom()
+      stepGoalDisplay()
+      friendNames()
+    })
+    
+    // user = new User(userData[Math.floor(Math.random() * userData.length)])
+    // userRepo = new UserRepository(usersArray)
+    // console.log('userRepo', userRepo)
+    console.log('get data', user)
+    function getRandomUser(){
 
-  window.addEventListener('load', () => {
-    user
-    promiseAll
-    displayName()
-    displayInfoToDom()
-    stepGoalDisplay()
-    friendNames()
-  })
-
-  // console.log('get data',getData)
-  function getRandomUser(){
     const newUser = users(user => new User(users[Math.floor(Math.random() * users.length)])) 
 
     userRepo = new UserRepository(usersArray)
