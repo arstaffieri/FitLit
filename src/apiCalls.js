@@ -10,5 +10,5 @@ const fetchData = () => {
   
 // console.log('I will be a fetch request!', fetchUserData())
 
-export default fetchUserData
+export default fetchData
 // export {promiseAll}
