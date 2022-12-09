@@ -24,18 +24,23 @@ let users
 let hydrationData
 
 // console.log('here', fetchUserData())
-Promise.all(fetchData()) //pass an array into the args --> 
+const getData = () => {
+  Promise.all(fetchData()) //pass an array into the args --> 
     .then(data => {
       users = data[0].userData 
-      user = users[Math.floor(Math.random() * users.length)] 
-      return
-    })
+      user = users[Math.floor(Math.random() * users.length)]
+      currentUser = new User(user) 
+      console.log('current user', currentUser)
+      return currentUser
+    })}
       // return users
     
+      console.log('get data', getData)
     window.addEventListener('load', () => {
       user
       promiseAll
-      getRandomUser()
+      // getRandomUser()
+      getData()
       displayName()
       displayInfoToDom()
       stepGoalDisplay()
@@ -45,18 +50,17 @@ Promise.all(fetchData()) //pass an array into the args -->
     // user = new User(userData[Math.floor(Math.random() * userData.length)])
     // userRepo = new UserRepository(usersArray)
     // console.log('userRepo', userRepo)
-    console.log('get data', user)
-    function getRandomUser(){
+  //   function getRandomUser(){
 
-    const newUser = users(user => new User(users[Math.floor(Math.random() * users.length)])) 
+  //   const newUser = users(user => new User(users[Math.floor(Math.random() * users.length)])) 
 
-    userRepo = new UserRepository(usersArray)
-    console.log('userRepo', userRepo)
-    return newUser
-  }
+  //   userRepo = new UserRepository(usersArray)
+  //   console.log('userRepo', userRepo)
+  //   return newUser
+  // }
 
 function displayName() {
-  userName.innerHTML = `Welcome, ${user.showFirstName()}!`
+  userName.innerHTML = `Welcome, ${currentUser.showFirstName()}!`
    }
 
    function displaySleepData(){
