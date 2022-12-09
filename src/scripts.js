@@ -52,7 +52,6 @@ function displayInfoToDom() {
     address.innerHTML = `Address: ${user.address}`
     strideLength.innerHTML = `Your Stride Length: ${user.strideLength}`
     userStepGoal.innerHTML = `Your Step Goal: ${user.dailyStepGoal}`
-    // friendsData.innerHTML = `Your Friends: ${user.friends.showFirstName()}`
 }
 
 function stepGoalDisplay() {
@@ -70,15 +69,4 @@ function stepGoalDisplay() {
   }
 
 
-// const makeClasses = (users) => {
-//   userRepository = new UserRepository(users);
-//   if (currentUser === undefined){
-//     getRandomUser();
-//   }}
-// const getRandomUser = () => {
-//   currentUser = new User(userData);
-//   userRepository = new UserRepository(currentUser)
-// }
 
-//getrandomIndex  compare user Id
-//userRepo has users
