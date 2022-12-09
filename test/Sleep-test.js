@@ -43,7 +43,67 @@ describe('Sleep', () => {
             date: "2019/06/15",
             hoursSlept: 4.1,
             sleepQuality: 3.6
-            }]
+            },
+            {
+            userID: 1,
+            date: "2019/06/16",
+            hoursSlept: 6,
+            sleepQuality: 2.2
+            },
+            {
+            userID: 2,
+            date: "2019/06/16",
+            hoursSlept: 7.1,
+            sleepQuality: 4.7
+            },
+            {
+            userID: 3,
+            date: "2019/06/16",
+            hoursSlept: 10,
+            sleepQuality: 4.7
+            },
+            {
+            userID: 4,
+            date: "2019/06/16",
+            hoursSlept: 5,
+            sleepQuality: 3
+            },
+            {
+            userID: 5,
+            date: "2019/06/16",
+            hoursSlept: 4,
+            sleepQuality: 3.6
+        },
+        {
+        userID: 1,
+        date: "2019/06/17",
+        hoursSlept: 5,
+        sleepQuality: 2.2
+        },
+        {
+        userID: 2,
+        date: "2019/06/17",
+        hoursSlept: 3,
+        sleepQuality: 4.7
+        },
+        {
+        userID: 3,
+        date: "2019/06/17",
+        hoursSlept: 1,
+        sleepQuality: 4.7
+        },
+        {
+        userID: 4,
+        date: "2019/06/17",
+        hoursSlept: 5,
+        sleepQuality: 3
+        },
+        {
+        userID: 5,
+        date: "2019/06/17",
+        hoursSlept: 4.1,
+        sleepQuality: 3.6}
+        ]
         user1 = new User({
             id: 1,
             name: "Luisa Hane",
@@ -92,7 +152,10 @@ describe('Sleep', () => {
     it('Should be an instance of Sleep', function () {
         expect(sleep).to.be.an.instanceOf(Sleep)
     })
-    it('Should be able to get user data by the user id', function () {
-        expect(sleep.findSleepDataByUserId(2)).to.deep.equal(sleepData[1])
+    // it('Should be able to get user data by the user id', function () {
+    //     expect(sleep.findSleepDataByUserId(2)).to.equal(sleepData[1])
+    // })
+    it('Should have a method that returns the average sleep data', function () {
+        expect(sleep.findAverageSleepHours(2)).to.equal(12.2)
     })
 })
