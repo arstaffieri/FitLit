@@ -8,6 +8,7 @@ const fetchData = () => {
     .then((hydration) => hydration.json())]
         }
   
-console.log('I will be a fetch request!', fetchData())
+// console.log('I will be a fetch request!', fetchUserData())
+
 export default fetchData
 // export {promiseAll}
