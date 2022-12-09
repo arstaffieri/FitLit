@@ -6,7 +6,7 @@ import UserRepository from './UserRepository';
 import fetchData from "./apiCalls.js"
 import promiseAll from './apiCalls.js'
 
-
+const hydrationData = document.querySelector('#hydration-data') 
 const sleepData = document.querySelector('#sleep-data') 
 const userName = document.querySelector('#username') 
 const name = document.querySelector('#name') 
@@ -21,7 +21,7 @@ let user
 let userRepo
 let currentUser
 let users
-let hydrationData
+// let hydrationData
 
 // console.log('here', fetchUserData())
 const getData = () => {
@@ -64,12 +64,20 @@ function displayName() {
    }
 
    function displaySleepData(){
-    // sleepData.innerHTML += 
-    // `<li> You slept ${hoursSlept()}hours! yout sleep quality was ${sleepQuality(example)}</li>
-    // <li>You slept ${hoursSlept(example)}hours this week! yout sleep quality was ${sleepQuality}</li>
-    // <li>$ Your all-time average sleep quality is ${allTimeQuality(example)} and your all-time average number of hours slept is ${allTimeHoursSlept(example)}</li>
-    
+    sleepData.innerHTML += 
+    `<li> You slept ${hoursSlept}hours! yout sleep quality was ${sleepQuality}</li>
+    <li>You slept ${hoursSlept}hours this week! yout sleep quality was ${sleepQuality}</li>
+    <li>$ Your all-time average sleep quality is ${allTimeQuality} 
+    and your all-time average number of hours slept is ${allTimeHoursSlept}</li>`
    }
+   
+   function displayHydrationData(){
+    hydrationData.innerHTML += 
+    `<li> You drank ${waterDrank} today!</li>
+    <li>You have drank${waterDrank} a day this week</li>
+    `
+   }
+    
 
 function displayInfoToDom() {
     name.innerHTML = `Name: ${user.name}`
