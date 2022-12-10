@@ -18,7 +18,14 @@ class Sleep {
             return bed
         }, 0)
         return averageSleepHours/userSleep.length
-
+    }
+    findAverageSleepQuality(userID) {
+        const userSleep = this.findSleepDataByUserId(userID)
+        const averageQuality = userSleep.reduce((acc, sleep) => {
+            acc += sleep.sleepQuality
+            return acc
+        }, 0)
+        return averageQuality/userSleep.length
     }
 }
 
