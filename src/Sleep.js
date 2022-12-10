@@ -27,6 +27,21 @@ class Sleep {
         }, 0)
         return averageQuality/userSleep.length
     }
+    findHoursSleptByDate(userID, date) {
+        const userSleep = this.findSleepDataByUserId(userID)
+        const hoursSleptByDate = userSleep.find(user => {
+            return user.date === date
+        })
+        return hoursSleptByDate.hoursSlept
+    }
+    // findSleepQualityByDate(userID, date) {
+    //     const userSleep = this.findSleepDataByUserId(userID)
+    //     const sleepQualityByDate = userSleep.find(user => {
+    //        return user.date === date
+    //     })
+    //     return sleepQualityByDate
+
+    // }
 }
 
 module.exports = Sleep

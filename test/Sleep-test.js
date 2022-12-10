@@ -117,4 +117,10 @@ describe('Sleep', () => {
     it('Should have a method to find the average quality of sleep for a user', function () {
         expect(sleep.findAverageSleepQuality(3)).to.equal(4.7)
     })
+    it('Should have a method to find a user\'s hours slept by date', function () {
+        expect(sleep.findHoursSleptByDate(2, "2019/06/15")).to.equal(7)
+    })
+    // it('Should have a method to return the user\'s sleep quality on a given date', function () {
+    //     expect.apply(sleep.findSleepQualityByDate(3, "2019/06/15")).to.equal(3)
+    // })
 })
