@@ -17,7 +17,7 @@ class Sleep {
             bed += sleep.hoursSlept
             return bed
         }, 0)
-        return averageSleepHours/this.sleepData.length
+        return averageSleepHours/userSleep.length
 
     }
 }
