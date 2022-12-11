@@ -145,8 +145,7 @@ describe('Sleep', () => {
         expect(sleep.findWeeklySleepHours(5,"2019/06/15")).to.equal(0.6)
     })
     it('Should have a method to find the average sleep quality of a user for a given week', function () {
-        console.log(sleep.findWeeklySleepQuality(5, "2019/06/15"))
-        expect(sleep.findWeeklySleepQuality(5, "2019/06/16")).to.equal([
+        expect(sleep.findWeeklySleepQuality(5, "2019/06/15")).to.deep.equal([
              {userID: 5, date: '2019/06/15', hoursSlept: 4.1, sleepQuality: 3.6}
           ])
     })
