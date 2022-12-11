@@ -45,6 +45,24 @@ describe('Sleep', () => {
                 sleepQuality: 3.6
                 },
                 {
+                userID: 5,
+                date: "2019/06/16",
+                hoursSlept: 4.1,
+                sleepQuality: 3.6
+                },
+                {
+                userID: 5,
+                date: "2019/06/17",
+                hoursSlept: 4.1,
+                sleepQuality: 3.6
+                },
+                {
+                userID: 5,
+                date: "2019/06/18",
+                hoursSlept: 4.1,
+                sleepQuality: 3.6
+                },
+                {
                 userID: 6,
                 date: "2019/06/15",
                 hoursSlept: 9.6,
@@ -120,7 +138,12 @@ describe('Sleep', () => {
     it('Should have a method to find a user\'s hours slept by date', function () {
         expect(sleep.findHoursSleptByDate(2, "2019/06/15")).to.equal(7)
     })
-    // it('Should have a method to return the user\'s sleep quality on a given date', function () {
-    //     expect.apply(sleep.findSleepQualityByDate(3, "2019/06/15")).to.equal(3)
-    // })
+    it('Should have a method to return the user\'s sleep quality on a given date', function () {
+        expect(sleep.findSleepQualityByDate(7, "2019/06/15")).to.equal(2.6)
+    })
+    it('Should be able to find a user\'s sleep data for a given week', function () {
+        console.log(sleep.findWeeklySleepHours(5,"2019/06/15"))
+        expect(sleep.findWeeklySleepHours(5,"2019/06/15")).to.equal(0.6)
+    })
+    
 })

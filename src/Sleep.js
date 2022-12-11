@@ -34,14 +34,26 @@ class Sleep {
         })
         return hoursSleptByDate.hoursSlept
     }
-    // findSleepQualityByDate(userID, date) {
-    //     const userSleep = this.findSleepDataByUserId(userID)
-    //     const sleepQualityByDate = userSleep.find(user => {
-    //        return user.date === date
-    //     })
-    //     return sleepQualityByDate
-
-    // }
+    findSleepQualityByDate(userID, date) {
+        const userSleep = this.findSleepDataByUserId(userID)
+        const sleepQualityByDate = userSleep.find(user => {
+           return user.date === date
+        })
+        return sleepQualityByDate.sleepQuality
+    }
+    findWeeklySleepHours(userID, date) {
+        const userSleep = this.findSleepDataByUserId(userID)
+        const getDates = userSleep.map(user => {
+            return user.date
+        })
+        const dateIndex = getDates.indexOf(date)
+        const weeklyRange = userSleep.slice(dateIndex -6, dateIndex +1)
+        const weeklySleepHours = weeklyRange.reduce((acc, hours) => {
+            acc += hours.hoursSlept / 7
+            return acc
+        }, 0)
+        return Number(weeklySleepHours.toFixed(1))
+    }
 }
 
 module.exports = Sleep
