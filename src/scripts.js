@@ -31,9 +31,16 @@ const getData = () => {
       users = data[0].userData 
       user = users[Math.floor(Math.random() * users.length)]
       currentUser = new User(user) 
-      sleep = data[1]
-      console.log('sleep?',sleep)
-     
+      sleep = data[1].sleepData
+
+      const sleepById = sleep.find(sleepLog => {
+        // const userSleepLog = () =>{
+           console.log( 'millerTime',sleepLog.userID)
+        //   if (sleepLog.userID === currentUser.id){
+        //     return 'currentUser'
+        
+      })
+      console.log('user id?',sleepById)
       displayInfoToDom()
     })}
      
@@ -46,7 +53,9 @@ window.addEventListener('load', () => {
 
 function displayInfoToDom() {
   displayUser()
-  stepGoalDisplay()     
+  stepGoalDisplay()
+  displaySleepData()
+   
 }   
 
 function displayUser() {
@@ -57,28 +66,29 @@ function displayUser() {
     strideLength.innerHTML = `Your Stride Length: ${currentUser.strideLength}`
     userStepGoal.innerHTML = `Your Step Goal: ${currentUser.dailyStepGoal}`
   
-    friendNames()
+    // friendNames()
   }
 
    function displaySleepData(){
-    sleepData.innerHTML += 
-    `<li> You slept ${hoursSlept()}hours! yout sleep quality was ${sleepQuality}</li>
-    <li>You slept ${hoursSlept}hours this week! yout sleep quality was ${sleepQuality}</li>
-    <li>$ Your all-time average sleep quality is ${allTimeQuality} and your all-time average number of hours slept is ${allTimeHoursSlept}</li>`
+    
+    // sleepData.innerHTML += 
+    // `<li> You slept ${hoursSlept()}hours! yout sleep quality was ${sleepQuality}</li>
+    // <li>You slept ${hoursSlept}hours this week! yout sleep quality was ${sleepQuality}</li>
+    // <li>$ Your all-time average sleep quality is ${allTimeQuality} and your all-time average number of hours slept is ${allTimeHoursSlept}</li>`
    }
 
 function stepGoalDisplay() {     
   averageStepGoal.innerHTML = `Your step goal is ${currentUser.dailyStepGoal} steps. The average step goal is ${userRepo.getAverageStepGoal()}.`
 }
 
-function friendNames() {
-  const userFriends = currentUser.friends
-  const findFriendsNames = userFriends.reduce((acc, friend) => {
-    const friendInfo = userRepo.getUserData(friend)
-    acc += `<p>${friendInfo.name}'s step goal: ${friendInfo.dailyStepGoal}</p>`
-    return acc
-  }, "")
-  friendsData.innerHTML = findFriendsNames
-}
+// function friendNames() {
+//   const userFriends = currentUser.friends
+//   const findFriendsNames = userFriends.reduce((acc, friend) => {
+//     const friendInfo = userRepo.getUserData(friend)
+//     acc += `<p>${friendInfo.name}'s step goal: ${friendInfo.dailyStepGoal}</p>`
+//     return acc
+//   }, "")
+//   friendsData.innerHTML = findFriendsNames
+// }
 
 
