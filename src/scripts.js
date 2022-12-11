@@ -3,8 +3,9 @@ import './images/turing-logo.png'
 // import userData from './data/users';
 import User from './User';
 import UserRepository from './UserRepository';
-import fetchData from "./apiCalls.js"
+import fetchData from './apiCalls.js'
 import promiseAll from './apiCalls.js'
+import Sleep from './Sleep.js'
 
 
 const sleepData = document.querySelector('#sleep-data') 
@@ -21,6 +22,7 @@ let user
 let userRepo
 let currentUser
 let users
+let sleep
 let hydrationData
 
 const getData = () => {
@@ -29,6 +31,8 @@ const getData = () => {
       users = data[0].userData 
       user = users[Math.floor(Math.random() * users.length)]
       currentUser = new User(user) 
+      sleep = data[1]
+      console.log('sleep?',sleep)
      
       displayInfoToDom()
     })}
@@ -41,11 +45,11 @@ window.addEventListener('load', () => {
 })
 
 function displayInfoToDom() {
-  displayName()
+  displayUser()
   stepGoalDisplay()     
 }   
 
-function displayName() {
+function displayUser() {
   userName.innerHTML = `Welcome, ${currentUser.showFirstName()}!`
     name.innerHTML = `Name: ${currentUser.name}`
     email.innerHTML = `Email: ${currentUser.email}`
@@ -57,19 +61,12 @@ function displayName() {
   }
 
    function displaySleepData(){
-    // sleepData.innerHTML += 
-    // `<li> You slept ${hoursSlept()}hours! yout sleep quality was ${sleepQuality(example)}</li>
-    // <li>You slept ${hoursSlept(example)}hours this week! yout sleep quality was ${sleepQuality}</li>
-    // <li>$ Your all-time average sleep quality is ${allTimeQuality(example)} and your all-time average number of hours slept is ${allTimeHoursSlept(example)}</li>
+    sleepData.innerHTML += 
+    `<li> You slept ${hoursSlept()}hours! yout sleep quality was ${sleepQuality}</li>
+    <li>You slept ${hoursSlept}hours this week! yout sleep quality was ${sleepQuality}</li>
+    <li>$ Your all-time average sleep quality is ${allTimeQuality} and your all-time average number of hours slept is ${allTimeHoursSlept}</li>`
    }
 
-function displayInfoToDom() {
-    name.innerHTML = `Name: ${user.name}`
-    email.innerHTML = `Email: ${user.email}`
-    address.innerHTML = `Address: ${user.address}`
-    strideLength.innerHTML = `Your Stride Length: ${user.strideLength}`
-    userStepGoal.innerHTML = `Your Step Goal: ${user.dailyStepGoal}`
-}
 function stepGoalDisplay() {     
   averageStepGoal.innerHTML = `Your step goal is ${currentUser.dailyStepGoal} steps. The average step goal is ${userRepo.getAverageStepGoal()}.`
 }
@@ -83,6 +80,5 @@ function friendNames() {
   }, "")
   friendsData.innerHTML = findFriendsNames
 }
-
 
 
