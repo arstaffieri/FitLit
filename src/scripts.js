@@ -23,7 +23,6 @@ let currentUser
 let users
 let hydrationData
 
-// console.log('here', fetchUserData())
 const getData = () => {
   Promise.all(fetchData()) //pass an array into the args --> 
     .then(data => {
@@ -43,9 +42,9 @@ window.addEventListener('load', () => {
 
 function displayInfoToDom() {
   displayName()
-  stepGoalDisplay()
-      
+  stepGoalDisplay()     
 }   
+
 function displayName() {
   userName.innerHTML = `Welcome, ${currentUser.showFirstName()}!`
     name.innerHTML = `Name: ${currentUser.name}`
@@ -62,8 +61,14 @@ function displayName() {
     // `<li> You slept ${hoursSlept()}hours! yout sleep quality was ${sleepQuality(example)}</li>
     // <li>You slept ${hoursSlept(example)}hours this week! yout sleep quality was ${sleepQuality}</li>
     // <li>$ Your all-time average sleep quality is ${allTimeQuality(example)} and your all-time average number of hours slept is ${allTimeHoursSlept(example)}</li>
-    
    }
+
+function displayInfoToDom() {
+    name.innerHTML = `Name: ${user.name}`
+    email.innerHTML = `Email: ${user.email}`
+    address.innerHTML = `Address: ${user.address}`
+    strideLength.innerHTML = `Your Stride Length: ${user.strideLength}`
+    userStepGoal.innerHTML = `Your Step Goal: ${user.dailyStepGoal}`
 
 function stepGoalDisplay() {     
   averageStepGoal.innerHTML = `Your step goal is ${currentUser.dailyStepGoal} steps. The average step goal is ${userRepo.getAverageStepGoal()}.`
