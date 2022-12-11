@@ -69,7 +69,7 @@ function displayInfoToDom() {
     address.innerHTML = `Address: ${user.address}`
     strideLength.innerHTML = `Your Stride Length: ${user.strideLength}`
     userStepGoal.innerHTML = `Your Step Goal: ${user.dailyStepGoal}`
-
+}
 function stepGoalDisplay() {     
   averageStepGoal.innerHTML = `Your step goal is ${currentUser.dailyStepGoal} steps. The average step goal is ${userRepo.getAverageStepGoal()}.`
 }
