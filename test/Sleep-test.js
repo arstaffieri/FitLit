@@ -142,8 +142,16 @@ describe('Sleep', () => {
         expect(sleep.findSleepQualityByDate(7, "2019/06/15")).to.equal(2.6)
     })
     it('Should be able to find a user\'s sleep data for a given week', function () {
-        console.log(sleep.findWeeklySleepHours(5,"2019/06/15"))
         expect(sleep.findWeeklySleepHours(5,"2019/06/15")).to.equal(0.6)
+    })
+    it('Should have a method to find the average sleep quality of a user for a given week', function () {
+        console.log(sleep.findWeeklySleepQuality(5, "2019/06/15"))
+        expect(sleep.findWeeklySleepQuality(5, "2019/06/16")).to.equal([
+             {userID: 5, date: '2019/06/15', hoursSlept: 4.1, sleepQuality: 3.6}
+          ])
+    })
+    it('Should have a method to find the average sleep quality for all users', function () {
+        expect(sleep.findAverageSleepQualityForAllUsers()).to.equal(3.5)
     })
     
 })

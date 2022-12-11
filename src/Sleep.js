@@ -54,6 +54,22 @@ class Sleep {
         }, 0)
         return Number(weeklySleepHours.toFixed(1))
     }
+    findWeeklySleepQuality(userID, date) {
+        const userSleep = this.findSleepDataByUserId(userID)
+        const getDates = userSleep.map(user => {
+            return user.date
+        })
+        const dateIndex = getDates.indexOf(date)
+        const weeklyRange = userSleep.slice(dateIndex -6, dateIndex +1)
+       return weeklyRange.reverse()
+    }
+    findAverageSleepQualityForAllUsers() {
+        const avgSleepQuality = this.sleepData.reduce((bed, sleep) => {
+            bed += sleep.sleepQuality
+            return bed
+          }, 0)
+          return parseFloat((avgSleepQuality / this.sleepData.length).toFixed(1))
+        }
 }
 
 module.exports = Sleep
