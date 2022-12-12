@@ -22,6 +22,7 @@ const friendsData = document.querySelector('#friends')
 let user
 let userRepo
 let currentUser
+let hydration
 
 // console.log('here', fetchUserData())
 Promise.all(fetchUserData()) //pass an array into the args --> 
@@ -32,6 +33,7 @@ Promise.all(fetchUserData()) //pass an array into the args -->
 
       user = new User(userData[Math.floor(Math.random() * userData.length)])
       userRepo = new UserRepository(usersArray)
+      hydration = new Hydration(apiData)
       console.log('userRepo', userRepo)
     })
 
