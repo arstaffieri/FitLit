@@ -24,6 +24,8 @@ let currentUser
 let users
 let sleep
 let hydrationData
+let sleepLog
+let sleepActivity 
 
 const getData = () => {
   Promise.all(fetchData()) //pass an array into the args --> 
@@ -32,15 +34,16 @@ const getData = () => {
       user = users[Math.floor(Math.random() * users.length)]
       currentUser = new User(user) 
       sleep = data[1].sleepData
-
-      const sleepById = sleep.find(sleepLog => {
-        // const userSleepLog = () =>{
-           console.log( 'millerTime',sleepLog.userID)
-        //   if (sleepLog.userID === currentUser.id){
-        //     return 'currentUser'
-        
+      const sleepID = sleep.find(log => {
+        if(log.userID == currentUser.id){
+          return log
+        }
+       
       })
-      console.log('user id?',sleepById)
+      // console.log('sleep ID', sleepID)
+      // sleepActivity = sleep.sleepData
+      sleepLog = new Sleep(sleepID, currentUser.id)
+      console.log('sleepLog', sleepLog )
       displayInfoToDom()
     })}
      
@@ -70,11 +73,10 @@ function displayUser() {
   }
 
    function displaySleepData(){
-    
-    // sleepData.innerHTML += 
-    // `<li> You slept ${hoursSlept()}hours! yout sleep quality was ${sleepQuality}</li>
-    // <li>You slept ${hoursSlept}hours this week! yout sleep quality was ${sleepQuality}</li>
-    // <li>$ Your all-time average sleep quality is ${allTimeQuality} and your all-time average number of hours slept is ${allTimeHoursSlept}</li>`
+    sleepData.innerHTML = 
+    `<li> You slept ${sleepLog.hoursSlept}hours! your sleep quality was ${sleepLog.sleepQuality}</li>
+    <li>You slept ${sleepLog.findWeeklySleepHours(currentUser.id, sleepLog.date)}hours this week! your sleep quality was ${sleepLog.findWeeklySleepQuality(currentUser.id, sleepLog.date)}</li>
+    <li>$ Your all-time average sleep quality is ${sleepLog.findAverageSleepQuality(currentUser.id)} and your all-time average number of hours slept is ${sleepLog.findAverageSleepHours(currentUser.id)}</li>`
    }
 
 function stepGoalDisplay() {     
