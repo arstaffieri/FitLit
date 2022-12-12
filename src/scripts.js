@@ -43,11 +43,10 @@ const getData = () => {
         }
        
       })
-      // console.log('sleep ID', sleepID)
-      // sleepActivity = sleep.sleepData
       sleepLog = new Sleep(sleepID, currentUser.id)
-      console.log('sleepLog', sleepLog )
-      displayInfoToDom()
+      console.log('promise', sleepLog )
+      
+    displayInfoToDom()
     })}
      
 window.addEventListener('load', () => {
@@ -75,21 +74,18 @@ function displayUser() {
   }
 
    function displaySleepData(){
-    console.log('html',sleepLog.findWeeklySleepHours)
+    // sleepLog = new Sleep(sleepID, currentUser.id)
+    console.log('sleepLog', sleepLog)
     sleepData.innerHTML = ``
     sleepData.innerHTML += 
-   `<li>You slept ${sleepLog.hoursSlept}hours! your sleep quality was ${sleepLog.sleepQuality} </li>`
-    // <li>You slept ${sleepLog.findWeeklySleepHours[weeklySleepHours]}hours this week! your sleep quality was ${sleepLog.findWeeklySleepQuality(currentUser.id, sleepLog.date)}</li>
+   `<li>You slept ${sleepLog.sleepData.hoursSlept} hours! your sleep quality was ${sleepLog.sleepData.sleepQuality} </li>
+    <li>You slept ${sleepLog.sleepData.findWeeklySleepHours}hours this week! your sleep quality was ${sleepLog.sleepData.findWeeklySleepQuality}</li>`
     // <li> Your all-time average sleep quality is ${sleepLog.findAverageSleepQuality(currentUser.id)} and your all-time average number of hours slept is ${sleepLog.findAverageSleepHours(currentUser.id)}</li>`
     
    }
 
 function stepGoalDisplay() {     
   averageStepGoal.innerHTML = `Your step goal is ${currentUser.dailyStepGoal} steps. The average step goal is ${userRepo.getAverageStepGoal()}.`
-}
-
-function stepGoalDisplay() {
-    averageStepGoal.innerHTML = `Your step goal is ${user.dailyStepGoal} steps. The average step goal is ${userRepo.getAverageStepGoal()}.`
 }
 
   function friendNames() {
