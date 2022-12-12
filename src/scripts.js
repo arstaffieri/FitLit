@@ -4,9 +4,14 @@ import userData from './data/users';
 import User from './User';
 import UserRepository from './UserRepository';
 // import hydrationData from './data/hydrationData';
+<<<<<<< Updated upstream
 // import Hydration from './Hydration.js';
 
 import fetchUserData from "./apiCalls.js"
+=======
+import Hydration from './Hydration.js'
+import fetchData from './apiCalls.js'
+>>>>>>> Stashed changes
 import promiseAll from './apiCalls.js'
 
 console.log('hello friends', fetchUserData)
@@ -27,9 +32,36 @@ let hydration
 // console.log('here', fetchUserData())
 Promise.all(fetchUserData()) //pass an array into the args --> 
     .then(data => {
+<<<<<<< Updated upstream
       console.log('data', data[0].userData) //
       const userDataArray = data[0].userData //array of data object --> class instance obj
       const usersArray = userDataArray.map(userObj => new User(userObj)) //
+=======
+      users = data[0].userData 
+      user = users[Math.floor(Math.random() * users.length)]
+      currentUser = new User(user) 
+      sleep = data[1].sleepData
+      const sleepID = sleep.find(log => {
+        if(log.userID == currentUser.id){
+          return log
+        }
+       
+      })
+      hydration = new Hydration(apiData)
+      // console.log('sleep ID', sleepID)
+      // sleepActivity = sleep.sleepData
+      sleepLog = new Sleep(sleepID, currentUser.id)
+      console.log('sleepLog', sleepLog )
+      displayInfoToDom()
+    })}
+     
+window.addEventListener('load', () => {
+  user
+  promiseAll
+  getData()
+  displayInfoToDom()
+})
+>>>>>>> Stashed changes
 
       user = new User(userData[Math.floor(Math.random() * userData.length)])
       userRepo = new UserRepository(usersArray)

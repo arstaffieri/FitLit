@@ -1,5 +1,4 @@
-import hydrationData from './data/hydrationData'; //test
-
+// import hydrationData from './data/hydrationData'; //test
 class Hydration{
     constructor(apiData){ //data from the hydration array in data folder 
         //placeholder for the API data to replace with interpolation
