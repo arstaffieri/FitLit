@@ -44,7 +44,15 @@ class Hydration{
         //find the date (day) find the number of oz drank by all users and get an avg of amount (oz drank / number of users or number of unique ids) .map make a copy of the array to use to collect all data for oz and users
     // }
 
-    
+    getOuncesByDate(userID, date) {
+        const userData = hydrationData.find(data => data.userID === userID && data.date === date)
+        return userData.numOunces
+    }
+
+    // OuncesDrankDay(){
+        //find the day and the oz .find?
+    // }
+
     // OuncesDrankWeek(){
         //find the days and make a week worth of time add together all of the oz for the week. set a starting day and an ending day do some math to make a week +7? make an index? look at math functions, .split(separator, limiter) limiter can be used to tell it to stop at 7 days? separator tells it how to organize/ split the data. look up slice.
     // }
