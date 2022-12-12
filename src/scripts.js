@@ -8,7 +8,7 @@ import promiseAll from './apiCalls.js'
 import Sleep from './Sleep.js'
 
 
-const sleepData = document.querySelector('#sleep-data') 
+const sleepData = document.querySelector('.sleep-data') 
 const userName = document.querySelector('#username') 
 const name = document.querySelector('#name') 
 const email = document.querySelector('#email')
@@ -68,15 +68,18 @@ function displayUser() {
     address.innerHTML = `Address: ${currentUser.address}`
     strideLength.innerHTML = `Your Stride Length: ${currentUser.strideLength}`
     userStepGoal.innerHTML = `Your Step Goal: ${currentUser.dailyStepGoal}`
-  
+    displaySleepData()
     // friendNames()
   }
 
    function displaySleepData(){
-    sleepData.innerHTML = 
-    `<li> You slept ${sleepLog.hoursSlept}hours! your sleep quality was ${sleepLog.sleepQuality}</li>
-    <li>You slept ${sleepLog.findWeeklySleepHours(currentUser.id, sleepLog.date)}hours this week! your sleep quality was ${sleepLog.findWeeklySleepQuality(currentUser.id, sleepLog.date)}</li>
-    <li>$ Your all-time average sleep quality is ${sleepLog.findAverageSleepQuality(currentUser.id)} and your all-time average number of hours slept is ${sleepLog.findAverageSleepHours(currentUser.id)}</li>`
+    console.log('html',sleepLog.findWeeklySleepHours)
+    sleepData.innerHTML = ``
+    sleepData.innerHTML += 
+   `<li>You slept ${sleepLog.hoursSlept}hours! your sleep quality was ${sleepLog.sleepQuality} </li>`
+    // <li>You slept ${sleepLog.findWeeklySleepHours[weeklySleepHours]}hours this week! your sleep quality was ${sleepLog.findWeeklySleepQuality(currentUser.id, sleepLog.date)}</li>
+    // <li> Your all-time average sleep quality is ${sleepLog.findAverageSleepQuality(currentUser.id)} and your all-time average number of hours slept is ${sleepLog.findAverageSleepHours(currentUser.id)}</li>`
+    
    }
 
 function stepGoalDisplay() {     
