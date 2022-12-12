@@ -3,6 +3,8 @@ import './images/turing-logo.png'
 // import userData from './data/users';
 import User from './User';
 import UserRepository from './UserRepository';
+// import hydrationData from './data/hydrationData';
+// import Hydration from './Hydration.js'
 import fetchData from './apiCalls.js'
 import promiseAll from './apiCalls.js'
 import Sleep from './Sleep.js'
@@ -21,6 +23,7 @@ const friendsData = document.querySelector('#friends')
 let user
 let userRepo
 let currentUser
+let hydration
 let users
 let sleep
 let hydrationData
@@ -58,7 +61,6 @@ function displayInfoToDom() {
   displayUser()
   stepGoalDisplay()
   displaySleepData()
-   
 }   
 
 function displayUser() {
@@ -86,14 +88,21 @@ function stepGoalDisplay() {
   averageStepGoal.innerHTML = `Your step goal is ${currentUser.dailyStepGoal} steps. The average step goal is ${userRepo.getAverageStepGoal()}.`
 }
 
-// function friendNames() {
-//   const userFriends = currentUser.friends
-//   const findFriendsNames = userFriends.reduce((acc, friend) => {
-//     const friendInfo = userRepo.getUserData(friend)
-//     acc += `<p>${friendInfo.name}'s step goal: ${friendInfo.dailyStepGoal}</p>`
-//     return acc
-//   }, "")
-//   friendsData.innerHTML = findFriendsNames
-// }
+function stepGoalDisplay() {
+    averageStepGoal.innerHTML = `Your step goal is ${user.dailyStepGoal} steps. The average step goal is ${userRepo.getAverageStepGoal()}.`
+}
+
+  function friendNames() {
+    const userFriends = user.friends
+    const findFriendsNames = userFriends.reduce((acc, friend) => {
+      const friendInfo = userRepo.getUserData(friend)
+      acc += `<p>${friendInfo.name}'s step goal: ${friendInfo.dailyStepGoal}</p>`
+      return acc
+    }, "")
+    friendsData.innerHTML = findFriendsNames
+  }
+
+
+
 
 
