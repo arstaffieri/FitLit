@@ -52,7 +52,17 @@ class Hydration{
     // OuncesDrankDay(){
         //find the day and the oz .find?
     // }
-
+    getWeeklyOunces(startDate, userID) {
+        const startDateObject = new Date(startDate)
+        const oneDay = 24 * 60 * 60 * 1000 //24hrs,60mins, 60secs, 1000ms
+        const week = [0, 1, 2, 3, 4, 5, 6].map(day => {
+            const date = new Date(startDateObject.getTime() + (day * oneDay))
+            return hydrationData.find(userHydrationInformation => 
+            userHydrationInformation.userID === userID && userHydrationInformation.date === date.toISOString().split("Time")[0]
+            ).numOunces
+        })
+        return week
+    }
     // OuncesDrankWeek(){
         //find the days and make a week worth of time add together all of the oz for the week. set a starting day and an ending day do some math to make a week +7? make an index? look at math functions, .split(separator, limiter) limiter can be used to tell it to stop at 7 days? separator tells it how to organize/ split the data. look up slice.
     // }
