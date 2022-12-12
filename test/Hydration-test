@@ -1,13 +1,10 @@
 import { expect } from 'chai';
-import UserRepository from '../src/UserRepository';
-import userData from '../src/data/users.js'
 import Hydration from '../src/Hydration';
 import hydrationData from '../src/data/hydrationData'
 
-describe('Hydration Data', function() {
+describe('Hydration Data', () => {
     let hydration
-    
-    beforeEach(function() {
+    beforeEach(() => {
       hydration = new Hydration(hydrationData)
     });
     
@@ -18,4 +15,4 @@ describe('Hydration Data', function() {
     it('should give back the right answer', function () {
       expect(hydration.getAverageOuncesForUserRounded()).to.be.equal(/*whatever is math*/)
     })
-}
+})
