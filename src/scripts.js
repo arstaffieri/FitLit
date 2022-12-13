@@ -86,6 +86,7 @@ function displayUser() {
     strideLength.innerHTML = `Your Stride Length: ${currentUser.strideLength}`
     userStepGoal.innerHTML = `Your Step Goal: ${currentUser.dailyStepGoal}`
     displaySleepData()
+    displayHydrationData()
     friendNames()
   }
 
@@ -112,10 +113,11 @@ function friendNames() {
 }
 
 function displayHydrationData() {
-  console.log('water', water)
+  console.log('water', hydrationLog)
   hydrationData.innerHTML = ``
   hydrationData.innerHTML += 
- `<li>You have drank ${water.getOuncesByDate(currentUser.id, currentDate)} water today</li>`
-  // <li>You drank ${waterOverTheLastWeek}</li>`
+ `<li>You have drank ${hydrationLog.numOunces}oz water today</li>
+  <li>You drank ${hydrationLog}</li>`
  }
 
+ 
