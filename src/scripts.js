@@ -49,9 +49,9 @@ const getData = () => {
         if(log.userID == currentUser.id){
           return log
         }
+        sleepLog = new Sleep(sleep, currentUser.id)
+        currentDate = sleepLog.sleepData.slice(-1)[0].date 
       })
-      sleepLog = new Sleep(sleep, currentUser.id)
-      currentDate = sleepLog.sleepData.slice(-1)[0].date 
 
       hydration = data[2].hydrationData
       hydrationLog = hydration.find(log => {
