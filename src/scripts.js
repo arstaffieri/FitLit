@@ -4,6 +4,12 @@ import './images/turing-logo.png'
 import User from './User';
 import UserRepository from './UserRepository';
 // import hydrationData from './data/hydrationData';
+// import Hydration from './Hydration.js';
+
+import fetchUserData from "./apiCalls.js"
+import Hydration from './Hydration.js'
+import fetchData from './apiCalls.js'
+
 // import Hydration from './Hydration.js'
 import fetchData from './apiCalls.js'
 import promiseAll from './apiCalls.js'
@@ -36,6 +42,11 @@ let currentDate
 const getData = () => {
   Promise.all(fetchData()) //pass an array into the args --> 
     .then(data => {
+
+      console.log('data', data[0].userData) //
+      const userDataArray = data[0].userData //array of data object --> class instance obj
+      const usersArray = userDataArray.map(userObj => new User(userObj)) //
+
       users = data[0].userData 
       user = users[Math.floor(Math.random() * users.length)]
       currentUser = new User(user) 
@@ -59,6 +70,7 @@ window.addEventListener('load', () => {
   getData()
   displayInfoToDom()
 })
+
 
 function displayInfoToDom() {
   displayUser()
