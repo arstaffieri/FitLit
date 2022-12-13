@@ -7,7 +7,7 @@ import hydrationData from '../src/data/hydrationData'
 describe('Hydration Data', function() {
     let hydration
     
-    beforeEach(function() {
+    beforeEach(() => {
       hydration = new Hydration(hydrationData)
       hydrationData = [ 
         {
