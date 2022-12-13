@@ -188,22 +188,22 @@ describe('Hydration Data', function() {
           ]
           })
   })
-  it('should be a function', () => {
-    expect(Hydration).to.be.a('function')
-  })
+//   it('should be a function', () => {
+//     expect(Hydration).to.be.a('function')
+//   })
 
-    it.skip('Should be an instance of Hydration', () => {
-      expect(hydration).to.be.an.instanceOf(Hydration)
-    })
+//     it.skip('Should be an instance of Hydration', () => {
+//       expect(hydration).to.be.an.instanceOf(Hydration)
+//     })
 
-    it.skip('Should have an array of user hydration data', () => {
-        expect(hydration.hydrationData).to.be.deep.equal(hydrationData)
-    })
+//     it.skip('Should have an array of user hydration data', () => {
+//         expect(hydration.hydrationData).to.be.deep.equal(hydrationData)
+//     })
 
-    it.skip('Should have user IDs', () => {
-        expect(hydration.userID).to.equal(hydrationData.userID)
-    })
-    it.skip('should give back the average number of ounces of a user', () => {
-      expect(hydration.getAverageOuncesForUser()).to.be.equal(/*whatever is math*/)
-    })
+//     it.skip('Should have user IDs', () => {
+//         expect(hydration.userID).to.equal(hydrationData.userID)
+//     })
+//     it.skip('should give back the average number of ounces of a user', () => {
+//       expect(hydration.getAverageOuncesForUser()).to.be.equal(/*whatever is math*/)
+//     })
 })
