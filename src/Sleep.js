@@ -17,7 +17,7 @@ class Sleep {
             bed += sleep.hoursSlept
             return bed
         }, 0)
-        return (averageSleepHours/userSleep.length).toFixed(1)
+        return Number((averageSleepHours/userSleep.length).toFixed(1))
     }
     findAverageSleepQuality(userID) {
         const userSleep = this.findSleepDataByUserId(userID)
@@ -25,7 +25,7 @@ class Sleep {
             acc += sleep.sleepQuality
             return acc
         }, 0)
-        return (averageQuality/userSleep.length).toFixed(1)
+        return Number((averageQuality/userSleep.length).toFixed(1))
     }
     findHoursSleptByDate(userID, date) {
         const userSleep = this.findSleepDataByUserId(userID)
@@ -66,7 +66,7 @@ class Sleep {
             sum += quality / 7
             return sum
         }, 0)
-       return sleepQuality.toFixed(1)
+       return Number(sleepQuality.toFixed(1))
     }
     findAverageSleepQualityForAllUsers() {
         const avgSleepQuality = this.sleepData.reduce((bed, sleep) => {
