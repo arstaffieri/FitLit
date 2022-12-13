@@ -1,15 +1,8 @@
 import './css/styles.css';
 import './images/turing-logo.png'
-// import userData from './data/users';
 import User from './User';
-import UserRepository from './UserRepository';
-// import hydrationData from './data/hydrationData';
-// import Hydration from './Hydration.js';
-
-import fetchUserData from "./apiCalls.js"
 import Hydration from './Hydration.js'
 import fetchData from './apiCalls.js'
-
 import promiseAll from './apiCalls.js'
 import Sleep from './Sleep.js'
 
@@ -35,10 +28,10 @@ let sleepLog
 let sleepID
 let hydration
 let hydrationLog
-let water
+let hydrationID
 
 const getData = () => {
-  Promise.all(fetchData()) //pass an array into the args --> 
+  Promise.all(fetchData()) 
     .then(data => {
       users = data[0].userData 
       user = users[Math.floor(Math.random() * users.length)]
@@ -49,20 +42,23 @@ const getData = () => {
         if(log.userID == currentUser.id){
           return log
         }
+        sleepLog = new Sleep(sleep, currentUser.id)
+        currentDate = sleepLog.sleepData.slice(-1)[0].date 
       })
-      sleepLog = new Sleep(sleep, currentUser.id)
-      currentDate = sleepLog.sleepData.slice(-1)[0].date 
-
+      console.log('sleep data === ', sleepLog)
       hydration = data[2].hydrationData
-      hydrationLog = hydration.find(log => {
+      hydrationID = hydration.find(log => {
         if(log.userID == currentUser.id){
           return log
         }
+
+        hydrationLog = new Hydration(hydration)
+        // currentDate2 = hydrationLog.hydrationData
       })
-      water = new Hydration(hydration)
-      
-    displayInfoToDom()
-    })}
+
+      displayInfoToDom()
+    })
+  }
      
 window.addEventListener('load', () => {
   user
@@ -113,11 +109,11 @@ function friendNames() {
 }
 
 function displayHydrationData() {
-  console.log('water', hydrationLog)
   hydrationData.innerHTML = ``
   hydrationData.innerHTML += 
- `<li>You have drank ${hydrationLog.numOunces}oz water today</li>
-  <li>You drank ${hydrationLog}</li>`
+ `<li>You have drank ${hydrationLog.numOunces} oz's water today</li>`
+  // <li>You drank ${hydrationLog.getOuncesByDate(currentUser.id, currentDate2)}</li>
+  
  }
 
  
