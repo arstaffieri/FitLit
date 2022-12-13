@@ -35,6 +35,9 @@ let sleep
 let hydrationData
 let sleepLog
 let sleepActivity 
+let someSleepName
+let sleepID
+let currentDate
 
 const getData = () => {
   Promise.all(fetchData()) //pass an array into the args --> 
@@ -48,20 +51,17 @@ const getData = () => {
       user = users[Math.floor(Math.random() * users.length)]
       currentUser = new User(user) 
       sleep = data[1].sleepData
-      const sleepID = sleep.find(log => {
+      sleepID = sleep.find(log => {
         if(log.userID == currentUser.id){
           return log
         }
-       
       })
-
-      hydration = new Hydration(apiData)
-
-      // console.log('sleep ID', sleepID)
-      // sleepActivity = sleep.sleepData
-      sleepLog = new Sleep(sleepID, currentUser.id)
-      console.log('sleepLog', sleepLog )
-      displayInfoToDom()
+      sleepLog = new Sleep(sleep, currentUser.id)
+        currentDate = sleepLog.sleepData.slice(-1)[0].date
+      console.log('user', sleepLog.sleepData)
+      console.log('promise', sleepID )
+      
+    displayInfoToDom()
     })}
      
 window.addEventListener('load', () => {
@@ -90,21 +90,19 @@ function displayUser() {
   }
 
    function displaySleepData(){
-    console.log('html',sleepLog.findWeeklySleepHours)
+    console.log('what is this?', sleepLog)
+    console.log('sleepLog', sleepLog.findWeeklySleepHours(currentUser.id, currentDate))
     sleepData.innerHTML = ``
+    console.log('sleepLog.userID', sleepLog.userID)
     sleepData.innerHTML += 
-   `<li>You slept ${sleepLog.hoursSlept}hours! your sleep quality was ${sleepLog.sleepQuality} </li>`
-    // <li>You slept ${sleepLog.findWeeklySleepHours[weeklySleepHours]}hours this week! your sleep quality was ${sleepLog.findWeeklySleepQuality(currentUser.id, sleepLog.date)}</li>
-    // <li> Your all-time average sleep quality is ${sleepLog.findAverageSleepQuality(currentUser.id)} and your all-time average number of hours slept is ${sleepLog.findAverageSleepHours(currentUser.id)}</li>`
+    `<li>You slept ${sleepLog.findHoursSleptByDate(currentUser.id, currentDate)} hours! your sleep quality was ${sleepLog.findSleepQualityByDate(currentUser.id, currentDate)} </li>
+    <li>You slept ${sleepLog.findWeeklySleepHours(currentUser.id, currentDate)}hours this week! your sleep quality was ${sleepLog.findWeeklySleepQuality(currentUser.id, currentDate)}</li>
+    <li> Your all-time average sleep quality is ${sleepLog.findAverageSleepQuality(currentUser.id)} and your all-time average number of hours slept is ${sleepLog.findAverageSleepHours(currentUser.id)}</li>`
     
    }
 
 function stepGoalDisplay() {     
   averageStepGoal.innerHTML = `Your step goal is ${currentUser.dailyStepGoal} steps. The average step goal is ${userRepo.getAverageStepGoal()}.`
-}
-
-function stepGoalDisplay() {
-    averageStepGoal.innerHTML = `Your step goal is ${user.dailyStepGoal} steps. The average step goal is ${userRepo.getAverageStepGoal()}.`
 }
 
   function friendNames() {
