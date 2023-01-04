@@ -1,150 +1,153 @@
 import { expect } from 'chai';
-import UserRepository from '../src/UserRepository';
-import userData from '../src/data/users.js'
 import Hydration from '../src/Hydration';
-import hydrationData from '../src/data/hydrationData'
+import User from '../src/User.js';
+import userData from '../src/data/users.js'
+import UserRepository from '../src/UserRepository.js';
 
-describe('Hydration Data', function() {
+describe('Hydration', () => {
     let hydration
-    
+    let hydrationData
+    let user1
+    let user2
+    let user3
     beforeEach(() => {
       hydration = new Hydration(hydrationData)
       hydrationData = [ 
         {
-            "userID": 1,
-            "date": "2019/06/15",
-            "numOunces": 37
+        "userID": 1,
+        "date": "2019/06/15",
+        "numOunces": 37
         },
         {
-            "userID": 2,
-            "date": "2019/06/15",
-            "numOunces": 75
+        "userID": 2,
+        "date": "2019/06/15",
+        "numOunces": 75
         },
         {
-            "userID": 3,
-            "date": "2019/06/15",
-            "numOunces": 47
+        "userID": 3,
+        "date": "2019/06/15",
+        "numOunces": 47
         },
         {
-            "userID": 1,
-            "date": "2019/07/15",
-            "numOunces": 33
+        "userID": 1,
+        "date": "2019/07/15",
+        "numOunces": 33
         },
         {
-            "userID": 2,
-            "date": "2019/07/15",
-            "numOunces": 73
+        "userID": 2,
+        "date": "2019/07/15",
+        "numOunces": 73
         },
         {
-            "userID": 3,
-            "date": "2019/07/15",
-            "numOunces": 43
+        "userID": 3,
+        "date": "2019/07/15",
+        "numOunces": 43
         },
         {
-            "userID": 1,
-            "date": "2019/08/15",
-            "numOunces": 17
+        "userID": 1,
+        "date": "2019/08/15",
+        "numOunces": 17
         },
         {
-            "userID": 2,
-            "date": "2019/08/15",
-            "numOunces": 55
+        "userID": 2,
+        "date": "2019/08/15",
+        "numOunces": 55
         },
         {
-            "userID": 3,
-            "date": "2019/08/15",
-            "numOunces": 17
+        "userID": 3,
+        "date": "2019/08/15",
+        "numOunces": 17
         },
         {
-            "userID": 1,
-            "date": "2019/09/15",
-            "numOunces": 12
+        "userID": 1,
+        "date": "2019/09/15",
+        "numOunces": 12
         },
         {
-            "userID": 2,
-            "date": "2019/09/15",
-            "numOunces": 19
+        "userID": 2,
+        "date": "2019/09/15",
+        "numOunces": 19
         },
         {
-            "userID": 3,
-            "date": "2019/09/15",
-            "numOunces": 12
+        "userID": 3,
+        "date": "2019/09/15",
+        "numOunces": 12
         },
         {
-            "userID": 1,
-            "date": "2019/10/15",
-            "numOunces": 30
+        "userID": 1,
+        "date": "2019/10/15",
+        "numOunces": 30
         },
         {
-            "userID": 2,
-            "date": "2019/10/15",
-            "numOunces": 55
+        "userID": 2,
+        "date": "2019/10/15",
+        "numOunces": 55
         },
         {
-            "userID": 3,
-            "date": "2019/10/15",
-            "numOunces": 18
+        "userID": 3,
+        "date": "2019/10/15",
+        "numOunces": 18
         },
         {
-            "userID": 1,
-            "date": "2019/11/15",
-            "numOunces": 22
+        "userID": 1,
+        "date": "2019/11/15",
+        "numOunces": 22
         },
         {
-            "userID": 2,
-            "date": "2019/11/15",
-            "numOunces": 60
+        "userID": 2,
+        "date": "2019/11/15",
+        "numOunces": 60
         },
         {
-            "userID": 3,
-            "date": "2019/11/15",
-            "numOunces": 50
+        "userID": 3,
+        "date": "2019/11/15",
+        "numOunces": 50
         },
         {
-            "userID": 1,
-            "date": "2019/12/15",
-            "numOunces": 42
+        "userID": 1,
+        "date": "2019/12/15",
+        "numOunces": 42
         },
         {
-            "userID": 2,
-            "date": "2019/12/15",
-            "numOunces": 55
+        "userID": 2,
+        "date": "2019/12/15",
+        "numOunces": 55
         },
         {
-            "userID": 3,
-            "date": "2019/12/15",
-            "numOunces": 44
+        "userID": 3,
+        "date": "2019/12/15",
+        "numOunces": 44
         },
         {
-            "userID": 1,
-            "date": "2019/13/15",
-            "numOunces": 17
+        "userID": 1,
+        "date": "2019/13/15",
+        "numOunces": 17
         },
         {
-            "userID": 2,
-            "date": "2019/13/15",
-            "numOunces": 12
+        "userID": 2,
+        "date": "2019/13/15",
+        "numOunces": 12
         },
         {
-            "userID": 3,
-            "date": "2019/13/15",
-            "numOunces": 46
+        "userID": 3,
+        "date": "2019/13/15",
+        "numOunces": 46
         },
         {
-            "userID": 1,
-            "date": "2019/14/15",
-            "numOunces": 75
+        "userID": 1,
+        "date": "2019/14/15",
+        "numOunces": 75
         },
         {
-            "userID": 2,
-            "date": "2019/14/15",
-            "numOunces": 61
+        "userID": 2,
+        "date": "2019/14/15",
+        "numOunces": 61
         },
         {
-            "userID": 3,
-            "date": "2019/14/15",
-            "numOunces": 37
-        },
+        "userID": 3,
+        "date": "2019/14/15",
+        "numOunces": 37
+        }
       ]
       user1 = new User({
           id: 1,
@@ -187,23 +190,35 @@ describe('Hydration Data', function() {
           33
           ]
           })
-  })
-//   it('should be a function', () => {
-//     expect(Hydration).to.be.a('function')
-//   })
+        //   console.log("this is data #1", hydrationData)
+    })
+    it('should be a function', () => {
+        expect(Hydration).to.be.a('function')
+    })
+    it('Should be an instance of Hydration', () => {
+        expect(hydration).to.be.an.instanceOf(Hydration)
+    })
+//this shouldnt be passing? but the hydrationData is now showing here
+    it('Should have an array of user hydration data', function () {
+        expect(hydration.hydrationData).to.be.deep.equal(hydrationData)
 
-//     it.skip('Should be an instance of Hydration', () => {
-//       expect(hydration).to.be.an.instanceOf(Hydration)
-//     })
+        // console.log("this is data #2 = user obj data", hydrationData)
+    })
 
-//     it.skip('Should have an array of user hydration data', () => {
-//         expect(hydration.hydrationData).to.be.deep.equal(hydrationData)
-//     })
+    it('Should have user IDs', function () {
+        expect(hydration.userID).to.equal(hydrationData.userID)
+    })
 
-//     it.skip('Should have user IDs', () => {
-//         expect(hydration.userID).to.equal(hydrationData.userID)
-//     })
-//     it.skip('should give back the average number of ounces of a user', () => {
-//       expect(hydration.getAverageOuncesForUser()).to.be.equal(/*whatever is math*/)
-//     })
+    it('should correctly store hydration data for each user', function() {
+        expect(hydration.hydrationData).to.deep.equal(hydrationData)
+
+        console.log("this is data #3 = user obj data", hydrationData)
+    })
+
+    it('should calculate the average ounces of water consumed by a given user', function() {
+        expect(hydration.getAverageOuncesForUser(1)).to.equal(32)
+        expect(hydration.getAverageOuncesForUser(2)).to.equal(52)
+    })
+
+
 })
