@@ -23,6 +23,10 @@ describe('User Repository', () => {
     expect(newUserRepository.getUserData(1)).to.deep.equal(userData[0])
   })
 
+  it('Should not return anything if the userID does not exist', function () {
+    expect(newUserRepository.getUserData(1.5)).to.be.undefined
+  })
+
   it('Should be able to calculate the average step goal of all users', function () {
     expect(newUserRepository.getAverageStepGoal()).to.equal(6700)
   })
