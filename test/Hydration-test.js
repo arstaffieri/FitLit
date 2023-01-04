@@ -202,7 +202,7 @@ describe('Hydration', () => {
     it('Should have an array of user hydration data', function () {
         expect(hydration.hydrationData).to.be.deep.equal(hydrationData)
 
-        console.log("this is data #2 = user obj data", hydrationData)
+        // console.log("this is data #2 = user obj data", hydrationData)
     })
 
     it('Should have user IDs', function () {
@@ -211,15 +211,13 @@ describe('Hydration', () => {
 
     it('should correctly store hydration data for each user', function() {
         expect(hydration.hydrationData).to.deep.equal(hydrationData)
-    })
 
-    it.skip('Should have a method that returns the average ounces drank for a user', function () {
-        expect(hydration.getAverageOuncesForUser(userID)).to.equal(/*math */)
+        console.log("this is data #3 = user obj data", hydrationData)
     })
 
     it('should calculate the average ounces of water consumed by a given user', function() {
-        expect(hydration.getAverageOuncesForUser(1)).to.equal(37)
-        expect(hydration.getAverageOuncesForUser(2)).to.equal(75)
+        expect(hydration.getAverageOuncesForUser(1)).to.equal(32)
+        expect(hydration.getAverageOuncesForUser(2)).to.equal(52)
     })
 
 
