@@ -132,6 +132,9 @@ describe('Sleep', () => {
     it('Should have a method that returns the average sleep data of a user', function () {
         expect(sleep.findAverageSleepHours(2)).to.equal(7)
     })
+    it('Should not return anything if the userID does not exisit', function () {
+        expect(sleep.findAverageSleepHours(3.4)).to.be.NaN
+    })
     it('Should have a method to find the average quality of sleep for a user', function () {
         expect(sleep.findAverageSleepQuality(3)).to.equal(4.7)
     })
