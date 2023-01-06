@@ -1,12 +1,18 @@
 class Hydration{
-    constructor(userHydrationData){ 
+    constructor(userHydrationData, userID){ 
         this.hydrationData = userHydrationData
-        //I just changed "data" to "hydrationData" (leftside) it was making problems on the test side.
-        //I will want to change the name so its easier to understand what is where hydrationData should be the user obj with key value pairs
-        //ctl Z to undo it seems like it is working now
-        console.log("??????????",userHydrationData)
+        this.userID = userID
     }
-    
+
+    findhydrationDataByUserId(userID) {
+        const hydrationDataByUserId = this.hydrationData.filter(user => {
+         if(userID === user.userID) {
+             return user
+         }
+        })
+    return hydrationDataByUserId
+    }
+
     getAverageOuncesForUser(userID) {
         let totalOunces = 0
         let averageOunces = 0

@@ -212,7 +212,7 @@ describe('Hydration', () => {
     it('should correctly store hydration data for each user', function() {
         expect(hydration.hydrationData).to.deep.equal(hydrationData)
 
-        console.log("this is data #3 = user obj data", hydrationData)
+        // console.log("this is data #3 = user obj data", hydrationData)
     })
 
     it('should calculate the average ounces of water consumed by a given user', function() {
